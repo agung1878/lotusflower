@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Lotus Flower</title>
+
+    <meta name="author" content="Lotus Flower">
+    <meta name="description" content="A journey that nobody care.">
+
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/images/apple-touch-icon.png}">
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/images/favicon-32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/favicon-16x16.png}">
+    <link rel="manifest" th:href="@{/images/site.webmanifest}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" th:href="@{/css/chroma.dracula.css}">
+</head>
+
+<body class="font-serif bg-gray-200 border-t-4 border-blue-500 antialiased">
+    <div class="w-full p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+        <header class="mb-6">
+
+            <div class="mb-6 md:flex md:items-center">
+
+                <div th:if="${error}" class="text-red-500">
+                    <p th:text="${error}"></p>
+                </div>
+
+                <div>
+                    <a class="text-lg mb-8 inline-block" th:href="@{/}">← Back</a>
+
+
+
+                    <h1 class="text-4xl font-bold" th:text="${post.title}">Lorem Ipsum Three</h1>
+                    <time th:datetime="${post.created}"
+                    th:text="${#temporals.format(post.created, 'MMM dd yyyy')}">02 Aug 2019</time>
+
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <article class="mb-12" th:utext="${post.content}">
+
+
+        </article>
+
+    </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: lfdb
+      POSTGRES_USER: lotus
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5433:5432"

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Lotus Flower</title>
+
+    <meta name="author" content="Lotus Flower">
+    <meta name="description" content="A journey that nobody care.">
+
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/images/apple-touch-icon.png}">
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/images/favicon-32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/favicon-16x16.png}">
+    <link rel="manifest" th:href="@{/images/site.webmanifest}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Arvo:400,700">
+    <link rel="stylesheet" th:href="@{/css/theme.css}">
+    <link rel="stylesheet" th:href="@{/css/chroma.dracula.css}">
+</head>
+
+<body class="font-serif bg-gray-200 antialiased">
+
+    <!-- Wrapper Container with min-h-screen -->
+    <div class="flex flex-col min-h-screen">
+
+        <!-- Header and Content Area -->
+        <header class="p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+            <div class="mb-6 md:flex md:items-center">
+                <img class="hidden md:block w-20 rounded-full mr-6" src="/images/lf.png" alt="Lotus Flower">
+                <div>
+                    <h1 class="text-4xl font-bold">Lotus Flower</h1>
+                    <p>A journey that nobody care.</p>
+                </div>
+            </div>
+
+            <nav>
+                <div th:if="${loggedInUser != null}">
+                    <a th:href="@{/content_manager/list}">Content Manager</a>
+                </div>
+                <div th:if="${loggedInUser == null}">
+                    <a th:href="@{/login}">Login</a>
+                </div>
+
+
+            </nav>
+        </header>
+
+        <!-- Main Content Section -->
+        <main class="flex-grow p-6 md:w-2/3 md:px-0 md:mx-auto xl:w-2/5">
+
+            <section class="mb-24">
+                <div th:each="entry : ${groupedPosts}">
+                    <h2 class="text-3xl font-bold mb-2" th:text="${entry.key}">2019</h2>
+                    <ol>
+                        <li class="mb-6 md:flex md:flex-row" th:each="post : ${entry.value}">
+                            <time class=" block md:flex-l-24" th:datetime="${post.created}"
+                                th:text="${#temporals.format(post.created, 'MMM dd')}">Aug 02</time>
+                            <a class="text-lg md:ml-12" th:href="@{/post/{id}(id=${post.id})}"
+                                th:text="${post.title}">Lorem IpsumThree</a>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+</body>
+
+</html>
